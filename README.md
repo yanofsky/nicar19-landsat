@@ -14,9 +14,9 @@ https://signup.earthengine.google.com/#!/
 
 The machines we used already had the following required software installed:
 * [Landsat Util](https://pythonhosted.org/landsat-util/installation.html)
-* [Adobe Photoshop](https://www.adobe.com/products/photoshop/free-trial-download.html)
+* [GIMP](https://www.gimp.org/)
 
-The Photoshop process can be achived in GIMP as well, but the method is very different
+The GIMP process can be achived in Photoshop as well, the method is similar. I find the Photoshop way easier.
 
 ## Where does this data come from
 
@@ -26,44 +26,42 @@ We didn't do this in the session but these tools provide various ways to downloa
 * [Landsat Util](https://pythonhosted.org/landsat-util/)
 * [Earth Explorer](https://earthexplorer.usgs.gov/)
 
-If you're doing this at home, you'll have a few more files in your directory than we used during the session.
+## Point and click with GIMP
 
-## Point and click with photoshop
+1. Open the three images in GIMP
+	* You want the XXX_B2.tif XXX_B3.tif and XXX_B4.tif files 
 
-1. Open the three images in photoshop
-	* You want the X_B2.tif X_B3.tif and X_B4.tif files 
+2. Open the Compose panel under `Colors > Components > Compose`
 
-2. Open the channels panel
+3. Select "RGB" in Color Model
 
-3. Click the menu button on that panel and select "Merge Channels..."
-
-4. Select "RGB Color" from mode, and keep channels at 3, click okay
-
-5. Specify your channels 
+4. Specify your channels 
 	* Red: X_B4.tif
 	* Green: X_B3.tif
 	* Blue: X_B2.tif
 
 	Click OK
 
-6. Your image is really dark. Lighten it up by going to `Image > Adjustments > Levels`
-	take the white carrot and drag it to the edge of the histogram, click okay
+6. Your image is really dark. Lighten it up by going to `Colors > Levels`
+	take the white carrot and drag it to the edge of the histogram
 
-7. Open the layers panel, create a new Curves adjustment layer by clicking the half-filled circle button at the bottom of the panel.
+7. From the set of eyedropper buttons on the bottom right of the panel, select the middle one, "Pick gray point"
 
-8. Zoom to something that looks like it's white, click the white eye dropper in the panel, then click the white area perhaps a cloud or building roof.
+8. Zoom into your image and find a cloud or white roofed building, click it. Click "OK" in the Levels panel
 
-9. In panel, select each channel from the RGB drop down, and drag the black carrot for each to the point on the histogram where the curve gets steep.
+9. Open the Curves panel `Colors > Curves`
 
-10. Switch back to the RGB view in the histogram and pull the middle of the white line up
+9. In panel, select each channel from the Channel drop down, and drag the dot on the bottom left for each to the point on the histogram where the curve gets steep.
+
+10. Switch back to the Value view in the histogram and pull the middle of the black line up. Click OK
 
 Using this method will remove all of the geographic metadata from your image. [Here is a way to get it back](https://gis.stackexchange.com/a/108703) using the command line tool GDAL.
 
 ## On the command line with landsat-util
 
-1. Open up the command line and navigate to the folder with your images
+1. Open up the command line and navigate to the project folder
 
-2. run `landsat process LC80230312014138LGN00 --pansharpen --bands 432`
+2. run `landsat process LC08_L1TP_041036_20190122_20190122_01_RT --pansharpen --bands 432`
 
 3. the output tells you where your file is located typically in your home directory inside of a folder at `landsat/processed/{landsat ID}`
 
