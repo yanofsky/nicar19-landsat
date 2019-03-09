@@ -90,7 +90,7 @@ var o = {
 
 5. Load all of the landsat scenes
 
-```
+```javascript
 var filteredCollection = ee.ImageCollection("LANDSAT/LC08/C01/T1_RT")
 ```
 
