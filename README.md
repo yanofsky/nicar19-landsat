@@ -81,7 +81,7 @@ Using this method will remove all of the geographic metadata from your image. [H
 ```
 var o = {
   start: ee.Date('2013-01-01'),
-  finish: ee.Date('2018-03-10'),
+  finish: ee.Date('2019-03-09'),
   target: geometry,
   cloud_cover_lt: 0.8,
   bands:["B4", "B3", "B2"]
@@ -96,7 +96,7 @@ var filteredCollection = ee.ImageCollection("LANDSAT/LC08/C01/T1_RT")
 
 6. Filter to the one that is over your point
 
-```
+```javascript
 var filteredCollection = ee.ImageCollection("LANDSAT/LC08/C01/T1_RT")
   .filterBounds(o.target)
 
@@ -105,23 +105,32 @@ var filteredCollection = ee.ImageCollection("LANDSAT/LC08/C01/T1_RT")
 
 7. Limit to those that have low cloud coverage
 
-```
+```javascript
 var filteredCollection = ee.ImageCollection("LANDSAT/LC08/C01/T1_RT")
   .filterBounds(o.target)
   .filterMetadata("CLOUD_COVER", "less_than", o.cloud_cover_lt)
 ```
 
-8. Pick the most recent of those
+8. Limit to captures of during daylight
 
+```javascript
+var filteredCollection = ee.ImageCollection("LANDSAT/LC08/C01/T1_RT")
+  .filterBounds(o.target)
+  .filterMetadata("CLOUD_COVER", "less_than", o.cloud_cover_lt)
+  .filterMetadata("SUN_ELEVATION", "greater_than", 0)
 ```
+
+9. Pick the most recent of those
+
+```javascript
 var scene = ee.Image(filteredCollection.sort("DATE_ACQUIRED", false).first());
 ```
 
-9. Set your parameters based on the data
+10. Set your parameters based on the data
 
 You can do it this way by manually defining the extent of your data
 
-```
+```javascript
 var params = {
   bands: o.bands,
   max: [10000,10000,10000],
@@ -159,13 +168,13 @@ var params = {
 
 ```
 
-10. Plot your scene in the environment
+11. Plot your scene in the environment
 
 ```
 Map.addLayer(scene, params)
 ```
 
-11. Save to your google drive as a jpeg
+12. Save to your google drive as a jpeg
 
 ```
 var export_image = scene.visualize(params)
@@ -178,7 +187,7 @@ Export.image.toDrive({
 })
 ```
 
-12. Click the "Run" button to exicute your code. In the "Tasks" panel clikc "Run" on the item created to begin the image export process.
+13. Click the "Run" button to exicute your code. In the "Tasks" panel clikc "Run" on the item created to begin the image export process.
 
 Exporting images from Earth Engine can be slow. To speed it up, try drawing a shape on the map viewer and using it to crop with. Then update the export section to look a like this.
 
