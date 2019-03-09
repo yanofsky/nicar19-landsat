@@ -120,6 +120,23 @@ var filteredCollection = ee.ImageCollection("LANDSAT/LC08/C01/T1_RT")
   .filterMetadata("SUN_ELEVATION", "greater_than", 0)
 ```
 
+**Code Check** 
+Right now your script should look like this
+```javascript
+var o = {
+  start: ee.Date('2013-01-01'),
+  finish: ee.Date('2019-03-09'),
+  target: geometry,
+  cloud_cover_lt: 0.8,
+  bands:["B4", "B3", "B2"]
+}
+
+var filteredCollection = ee.ImageCollection("LANDSAT/LC08/C01/T1_RT")
+  .filterBounds(o.target)
+  .filterMetadata("CLOUD_COVER", "less_than", o.cloud_cover_lt)
+  .filterMetadata("SUN_ELEVATION", "greater_than", 0)
+```
+
 9. Pick the most recent of those
 
 ```javascript
@@ -140,7 +157,7 @@ var params = {
 ```
 
 
-More complexly you can try to do it automatically by programatically calculating the extent of your data
+More complexly you can try to do it automatically by programatically calculating the extent of the data in your target area
 
 ```
 var bandMax = filteredCollection.median()
