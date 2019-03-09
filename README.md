@@ -159,11 +159,11 @@ var params = {
 
 More complexly you can try to do it automatically by programatically calculating the extent of the data in your target area
 
-```
+```javascript
 var bandMax = filteredCollection.median()
     .reduceRegion({
       geometry: o.target,
-      reducer: ee.Reducer.max(),
+      reducer: ee.Reducer.percentile([99]),
       scale: 60,
       tileScale: 16
     })
@@ -171,7 +171,7 @@ var bandMax = filteredCollection.median()
   var bandMin = filteredCollection.median()
     .reduceRegion({
       geometry: o.target,
-      reducer: ee.Reducer.min(),
+      reducer: ee.Reducer.percentile([1]),
       scale: 60,
       tileScale: 16
     })
@@ -179,21 +179,21 @@ var bandMax = filteredCollection.median()
 
 var params = {
   bands: o.bands,
-  max: o.bands.map(function(b){return bandMax.get(b).getInfo() * 1.5}),
-  min: o.bands.map(function(b){return bandMin.get(b).getInfo() * 0.15})
+  max: bandMax.values(o.bands).getInfo(),
+  min: bandMin.values(o.bands).getInfo()
 }
 
 ```
 
 11. Plot your scene in the environment
 
-```
+```javascript
 Map.addLayer(scene, params)
 ```
 
 12. Save to your google drive as a jpeg
 
-```
+```javascript
 var export_image = scene.visualize(params)
 
 Export.image.toDrive({
@@ -208,7 +208,7 @@ Export.image.toDrive({
 
 Exporting images from Earth Engine can be slow. To speed it up, try drawing a shape on the map viewer and using it to crop with. Then update the export section to look a like this.
 
-```
+```javascript
 var export_image = scene.visualize(params)
 
 Export.image.toDrive({
