@@ -78,7 +78,7 @@ Using this method will remove all of the geographic metadata from your image. [H
 
 4. Define your parameters
 
-```
+```javascript
 var o = {
   start: ee.Date('2013-01-01'),
   finish: ee.Date('2019-03-09'),
