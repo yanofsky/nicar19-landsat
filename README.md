@@ -8,6 +8,8 @@ In this hands-on training, you'll learn how to find, download, combine, and turn
 
 [Best tutorial on using landsat util to process Landsat](https://www.developmentseed.org/blog/2014/08/29/landsat-util/)
 
+[Best rundown of using satellites for journalism](https://gist.github.com/briantjacobs/ae5510ca84ef172b2f5f)
+
 ## First things first
 
 Request access to Google Earth Engine code environment
@@ -231,4 +233,6 @@ These are some stories that have used Landsat imagery to various ends. Some simp
 * [Who is the Wet Prince of Bel Air? Here are the likely culprits](https://www.revealnews.org/article/who-is-the-wet-prince-of-bel-air-here-are-the-likely-culprits/) by Reveal
 * [Welcome to Fabulous Las Vegas: While supplies last](https://projects.propublica.org/las-vegas-growth-map/) by Propublica
 * [A Rogue State Along Two Rivers](https://www.nytimes.com/interactive/2014/07/03/world/middleeast/syria-iraq-isis-rogue-state-along-two-rivers.html) by The New York Times
+
+**[Sign Up for the Space Journos Slack](https://join.slack.com/t/space-journos/shared_invite/enQtNTcxMjkxMDA2Mjc0LWE3OGRkYTlkN2E5OWEyYTVmZmY0YTBjY2I2OGNjMjc1NGRmNTI2NGFkYjExMGI2ZjVmNmEyYzllOTAxNzczNDk)**
 
