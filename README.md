@@ -137,7 +137,9 @@ var filteredCollection = ee.ImageCollection("LANDSAT/LC08/C01/T1_RT")
   .filterMetadata("SUN_ELEVATION", "greater_than", 0)
 ```
 
-9. Pick the most recent of those
+**Okay back to it...** 
+
+9. Pick the most recent of of your collection
 
 ```javascript
 var scene = ee.Image(filteredCollection.sort("DATE_ACQUIRED", false).first());
