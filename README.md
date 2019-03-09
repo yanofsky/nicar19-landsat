@@ -1,5 +1,7 @@
 # Creating your first satellite image
 
+## http://bit.ly/nicar19-landsat
+
 In this hands-on training, you'll learn how to find, download, combine, and turn data captured by satellites into ready-for-publication images. You'll learn three ways to do this by using point and click tools, command line and Google Earth Engine.
 
 [Best tutorial on using photoshop to process Landsat](https://earthobservatory.nasa.gov/blogs/elegantfigures/2013/10/22/how-to-make-a-true-color-landsat-8-image/)
