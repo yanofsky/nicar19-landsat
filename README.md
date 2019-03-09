@@ -236,3 +236,7 @@ These are some stories that have used Landsat imagery to various ends. Some simp
 
 **[Sign Up for the Space Journos Slack](https://join.slack.com/t/space-journos/shared_invite/enQtNTcxMjkxMDA2Mjc0LWE3OGRkYTlkN2E5OWEyYTVmZmY0YTBjY2I2OGNjMjc1NGRmNTI2NGFkYjExMGI2ZjVmNmEyYzllOTAxNzczNDk)**
 
+## Two Resources during breaking news events
+[Digital Globe's Open Data](http://www.digitalglobe.com/opendata)
+[Planet Disaster Data](https://www.planet.com/disasterdata/)
+
